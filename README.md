@@ -1,2 +1,2 @@
 # Devops
-linux automatical tools and code
+i wanna share my thoughts for you, that's all.
