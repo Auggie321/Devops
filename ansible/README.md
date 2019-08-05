@@ -1,0 +1,26 @@
+### 安装
+```
+截止到2019.08.05，centos初始默认的仓库ansible版本比较低为2.4版本，很多高级的功能比如loop模块等无法使用，
+需要自行安装高级的稳定版本。如果已经使用yum安装，可以安装rpm包，系统会自动更新，并剔除旧有版本，同时不影响现有ansible使用
+生产ansible请自行根据，本身的绑定关系自行选择
+
+[centos ansible ftp link][1]
+ansible2.8 安装举例：
+wegt https://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/ansible-2.8.3-1.el7.ans.noarch.rpm
+rpm -Uivh ansible-2.8.3-1.el7.ans.noarch.rpm
+ansible --version
+```
+
+### 文档
+[ansible for devops][2]
+[ansible汉化基础文档][3]
+[ansible官方文档][4]
+
+### ansible高级玩法demo
+
+
+
+[1]: https://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/
+[2]: https://www.ansible.com/resources/ebooks/ansible-for-devops
+[3]: http://getansible.com/
+[4]: https://docs.ansible.com/ansible/latest/
