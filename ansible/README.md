@@ -12,21 +12,24 @@ ansible --version
 ```
 
 
-### 文档
-[ansible for devops][2]  
-[ansible汉化基础文档][3]  
-[ansible-en-doc][4]  
-[ansible-zh-doc][5]
 
 
 ### ansible production demo(processing)
 ```
-随着业务复杂度的深入，ansible的使用也更多的偏向架构的调整和设置，给业务逻辑一个合适的ansible架构将是后续更新的重点
+随着业务复杂度的深入，ansible的使用也更多的偏向架构的调整和设计，  
+给业务逻辑一个合适的ansible架构将是我后续更新的重点
 ```
 
+### 文档
+[ansible for devops][2]  
+[ansible for devops books demo][6]
+[ansible汉化基础文档][3]  
+[ansible-en-doc][4]  
+[ansible-zh-doc][5]
 
 [1]: https://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/
 [2]: https://www.ansible.com/resources/ebooks/ansible-for-devops
 [3]: http://getansible.com/
 [4]: https://docs.ansible.com/ansible/latest/
 [5]: https://ansible-tran.readthedocs.io/en/latest/docs/
+[6]: https://github.com/geerlingguy/ansible-for-devops
