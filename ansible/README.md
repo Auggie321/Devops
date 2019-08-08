@@ -21,8 +21,7 @@ ansible --version
 ```
 
 ### 文档
-[ansible for devops][2]  
-[ansible for devops books demo][6]
+[ansible for devops][2],[books github demo][6]
 [ansible汉化基础文档][3]  
 [ansible-en-doc][4]  
 [ansible-zh-doc][5]
