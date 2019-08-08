@@ -20,7 +20,9 @@ ansible --version
 
 
 ### ansible production demo(processing)
-
+```
+随着业务复杂度的深入，ansible的使用也更多的偏向架构的调整和设置，给业务逻辑一个合适的ansible架构将是后续更新的重点
+```
 
 
 [1]: https://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/
