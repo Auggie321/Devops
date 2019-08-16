@@ -1,15 +1,15 @@
-app1 ansible_host=192.168.60.4  ansible_user=root ansible_ssh_port=22 ansible_ssh_pass=vagrant
-app2 ansible_host=192.168.60.5  ansible_user=root ansible_ssh_port=22 ansible_ssh_pass=vagrant
-db   ansible_host=192.168.60.6  ansible_user=root ansible_ssh_port=22 ansible_ssh_pass=vagrant
+app1 ansible_host=192.168.60.7  ansible_user=root ansible_ssh_port=22 ansible_ssh_pass=vagrant
+app2 ansible_host=192.168.60.8  ansible_user=root ansible_ssh_port=22 ansible_ssh_pass=vagrant
+db   ansible_host=192.168.60.9  ansible_user=root ansible_ssh_port=22 ansible_ssh_pass=vagrant
 
 # Application servers
 [app]
-192.168.60.4
-192.168.60.5
+192.168.60.7
+192.168.60.8
 
 # Database server
 [db]
-192.168.60.6
+192.168.60.9
 
 # Group 'multi' with all servers
 [multi:children]
