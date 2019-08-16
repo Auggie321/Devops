@@ -16,7 +16,7 @@ vscode have good optimization in win10 and mac, contains rich extensions too.
 
 ### Better plugin in vscode
 
-1.  [vscode SFTP][1]  
+1.  [Vscode SFTP][1]  
 ```
 >* when to use
 1.Writting large yml files or hundred of lines code, testing in remote server immediately.
