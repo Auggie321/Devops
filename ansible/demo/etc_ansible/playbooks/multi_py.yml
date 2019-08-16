@@ -1,0 +1,49 @@
+---
+- hosts: all  # remote_user must have sudo privs,install python3.7.2
+  remote_user: root
+
+  vars:
+    python_version_maj: "3"
+    python_version_maj_min: "{{ python_version_maj}}.7"
+    python_version: "{{ python_version_maj_min }}.2"
+    
+  tasks: # yum install dependencies
+    - name: install yum pkgs for python3 build
+      yum:
+        name: "{{ item }}"
+        state: present
+      become: true
+      loop:
+        - gcc
+        - openssl-devel
+        - bzip2-devel
+        - libffi-devel
+
+    - name: Directory for download of python source must exist
+      file:
+        path: "/usr/src"
+        state: directory
+      become: true
+
+    - name: Install Python version {{ python_version }} in /usr/local/bin  # Not very 'ansible', but easy to paste into shell script
+      shell: |
+        cd /usr/src
+        wget https://www.python.org/ftp/python/{{ python_version }}/Python-{{ python_version }}.tgz
+        tar xzf Python-{{ python_version }}.tgz
+        cd Python-{{ python_version }}
+        ./configure --enable-optimizations
+        make altinstall
+      become: true
+        rm /usr/src/Python-{{ python_version }}.tgz
+
+    - name: Create python3 symlink
+      file:
+        path: "/usr/local/bin/{{ item }}{{ python_version_maj }}"
+        src: "/usr/local/bin/{{ item }}{{ python_version_maj_min }}"
+        state: link
+        owner: root
+        group: root
+      become: true
+      loop:
+        - python
+        - pip

@@ -1,0 +1,24 @@
+app1 ansible_host=192.168.60.4  ansible_user=root ansible_ssh_port=22 ansible_ssh_pass=vagrant
+app2 ansible_host=192.168.60.5  ansible_user=root ansible_ssh_port=22 ansible_ssh_pass=vagrant
+db   ansible_host=192.168.60.6  ansible_user=root ansible_ssh_port=22 ansible_ssh_pass=vagrant
+
+# Application servers
+[app]
+192.168.60.4
+192.168.60.5
+
+# Database server
+[db]
+192.168.60.6
+
+# Group 'multi' with all servers
+[multi:children]
+app
+db
+
+# Variables that will beapplied to all servers
+[multi:vars]
+#ansible_python_interpreter=/usr/bin/env python3
+#ansible_python_interpreter=/usr/bin/python3
+#ansible_ssh_user=vagrant
+#ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
