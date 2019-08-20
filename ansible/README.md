@@ -11,8 +11,27 @@ rpm -Uivh ansible-2.8.3-1.el7.ans.noarch.rpm
 ansible --version
 ```
 
-
-
+### ansible-demo基础架构（processing）  
+```
+etc_ansible/
+├── ansible.cfg
+├── inventory
+│   ├── group_vars
+│   └── inventory
+├── library
+├── module_utils
+├── playbooks
+│   └── multi_py.yml
+├── roles
+├── scripts
+└── vagrant
+    └── Vagrantfile
+```
+```
+ansible结合业务, 对架构的嵌套整合, 弱化了playbooks目录下bookyaml的集中配置,  
+加重了架构间变量传导,依赖和执行,分离playbook的配置文件, include到具体的文件夹内部进行执行,  
+对后续的维护和拓展大有帮助, 个人认为用好变量的传递是ansible的核心, 架构设计是最好的实践.  
+```
 
 ### ansible production demo(processing)
 ```
