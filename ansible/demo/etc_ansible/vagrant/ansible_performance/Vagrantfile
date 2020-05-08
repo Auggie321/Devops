@@ -1,0 +1,56 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+$script_all = <<SCRIPT
+for((i=1;i<=5;i++)); do echo "192.168.60.10$i  ans$i" >> /etc/hosts ;done
+yum -y install vim tree
+ssh-keygen -f ~/.ssh/id_rsa -t rsa -N ''
+source ~/.bashrc
+cat /dev/null > ~/.bash_history
+SCRIPT
+
+$script1 = <<SCRIPT
+yum -y install epel-release
+yum -y install ansible
+wget https://networkgenomics.com/try/mitogen-0.2.9.tar.gz
+tar -xf mitogen-0.2.9.tar.gz -C /etc/ansible
+for((i=1;i<=5;i++)); do ssh-keyscan -f ~/.ssh/id_rsa.pub 192.168.60.10$i >> ~/.ssh/known_hosts ;done
+for((i=1;i<=5;i++)); do sshpass -p "vagrant" ssh-copy-id root@192.168.60.10$i >> ~/.ssh/known_hosts ;done
+cat /dev/null > ~/.bash_history
+SCRIPT
+
+Vagrant.configure("2") do |config|
+  5.downto(1)  do |i|
+    config.ssh.username = 'root'
+    config.ssh.password = 'vagrant'
+    config.ssh.insert_key = 'true'
+    if "#{i}" != "1"
+        config.vm.define "ans#{i}" do |app|
+          app.vm.box = "centos_tmp"
+          app.vm.hostname = "ans#{i}"
+          app.vm.provision "file", source: ".bashrc",destination: "/root/"
+          app.vm.provision "shell", inline: $script_all
+          app.vm.network :private_network, ip: "192.168.60.10#{i}"
+          app.vm.provider :virtualbox do |vb|
+            vb.customize ["modifyvm", :id, "--memory", "1024", "--cpus", "1"]
+          end
+        end
+      end
+    ## Ruby uses elsif, not else if nor elif.
+    if "#{i}" == "1"
+        config.vm.define "ans#{i}" do |app|
+          app.vm.box = "centos_tmp"
+          app.vm.hostname = "ans#{i}"
+          app.vm.provision "file", source: "hosts",destination: "/etc/ansible/hosts"
+          app.vm.provision "file", source: "ansible.cfg",destination: "/etc/ansible/ansible.cfg"
+          app.vm.provision "file", source: ".bashrc",destination: "/root/"
+          app.vm.provision "shell", inline: $script_all
+          app.vm.network :private_network, ip: "192.168.60.10#{i}"
+          app.vm.provision "shell", inline: $script1
+          app.vm.provider :virtualbox do |vb|
+            vb.customize ["modifyvm", :id, "--memory", "1024", "--cpus", "1"]
+          end
+        end
+      end
+    end
+end

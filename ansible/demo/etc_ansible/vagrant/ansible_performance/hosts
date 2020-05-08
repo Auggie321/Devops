@@ -1,0 +1,12 @@
+app1 ansible_host=192.168.60.101  ansible_user=root ansible_ssh_port=22 ansible_ssh_pass=vagrant
+app2 ansible_host=192.168.60.102  ansible_user=root ansible_ssh_port=22 ansible_ssh_pass=vagrant
+app3 ansible_host=192.168.60.103  ansible_user=root ansible_ssh_port=22 ansible_ssh_pass=vagrant
+app4 ansible_host=192.168.60.104  ansible_user=root ansible_ssh_port=22 ansible_ssh_pass=vagrant
+app5 ansible_host=192.168.60.105  ansible_user=root ansible_ssh_port=22 ansible_ssh_pass=vagrant
+
+[all]
+app1
+app2
+app3
+app4
+app5
